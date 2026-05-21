@@ -3,6 +3,8 @@
 name: CI
 run-name: ${{ github.actor }} is testing on GitHub
 
+env:
+  APP_ENV: PythonApp
 
 # Controls when the workflow will run
 on:
@@ -21,11 +23,14 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    env:
+      CONFIG_TYPE: Debug
+      PYTHON_VERSION: 3.8
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
+      - run: echo "${{env.APP_ENV}} - ${{env.CONFIG_TYPE}} - ${{env.PYTHON_VERSION}}"
       - run: echo "job was triggered by event ${{ github.event_name }}"
       - run: echo "job was trunned on runner with${{runner.os}}"
       - run: echo "Name of the branch is ${{github.ref}}. Repository is ${{github.repository}}"
       - run: echo "This jobs status is ${{job.status}}"
+
