@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  GITHUB_ACTIONS: "GitHub  Actions"
+  GITHUB_ACTIONS: "GitHub Actions enviroment variable"
 
 jobs:
   github-tast-job:
@@ -19,7 +19,7 @@ jobs:
         run: echo "${{ env.GITHUB_ACTIONS }}"
 
       - name: Show repo name and branch name
-        run: echo "repository name ${{github.repository}}\nbranch name ${{github.ref_name}}"
+        run: echo "repository name ${{github.repository}} branch name ${{github.ref_name}}"
 
       - name: Show job trigger
         run: echo "job was triggered by ${{github.event_name}}"
