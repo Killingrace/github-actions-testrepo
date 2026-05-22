@@ -23,7 +23,7 @@ async def read_counter() -> int:
         return 0
 
 
-app = FastAPI ()
+app = FastAPI()
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -38,7 +38,7 @@ async def hello():
         """
 
 
-@app.get( "/logo")
+@app.get("/logo")
 async def logo():
     return FileResponse(path="image.png")
 
