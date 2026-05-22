@@ -3,6 +3,7 @@ run-name: ${{github.actor}} initialized workflow
 
 on:
   pull_request:
+  workflow_dispatch:
 
 env:
   GITHUB_ACTIONS: "GitHub  Actions"
