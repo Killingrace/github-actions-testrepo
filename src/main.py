@@ -23,10 +23,10 @@ async def read_counter() -> int:
         return 0
 
 
-app = FastAPI()
+app = FastAPI ()
 
 
-@app.get("/" ,response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 async def hello():
     counter = await read_counter()
     counter += 1
@@ -38,10 +38,10 @@ async def hello():
         """
 
 
-@app.get("/logo")
+@app.get( "/logo")
 async def logo():
-    return FileResponse(path="image.png") 
+    return FileResponse(path="image.png")
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     run(app="main:app", host="0.0.0.0", port=8080)
