@@ -40,3 +40,7 @@ jobs:
       - name: Lint
         run: |
           flake8 . --show-source --statistics
+
+      - name: Check complexity
+        run: |
+          flake8 --statistics --max-complexity=10 --exit-zero
