@@ -3,6 +3,7 @@ run-name: ${{github.actor}} initialized workflow
 
 on:
   pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 env:
@@ -18,7 +19,7 @@ jobs:
         run: echo "${{ env.GITHUB_ACTIONS }}"
 
       - name: Show repo name and branch name
-        run: echo "repository name ${{github.repository.name}}\nbranch name ${{github.ref_name}}"
+        run: echo "repository name ${{github.repository}}\nbranch name ${{github.ref_name}}"
 
       - name: Show job trigger
-        run: echo "job was triggered by ${{job.workflow_ref}}"
+        run: echo "job was triggered by ${{github.event_name}}"
