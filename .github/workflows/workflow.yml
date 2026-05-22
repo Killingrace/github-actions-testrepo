@@ -1,25 +1,20 @@
-name: CI
-run-name: ${{github.actor}} initialized workflow
+name: python-deployment
+
+run-name: ${{github.actor}} - ${{github.ref_name}} #Who starter Flow and from what branch
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
-  workflow_dispatch:
-
-env:
-  GITHUB_ACTIONS: "GitHub Actions enviroment variable"
+    branches:
+      - main
 
 jobs:
-  github-tast-job:
-
+  python-ci:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show GITHUB_ACTIONS env
-        run: echo "${{ env.GITHUB_ACTIONS }}"
 
-      - name: Show repo name and branch name
-        run: echo "repository name ${{github.repository}} branch name ${{github.ref_name}}"
-
-      - name: Show job trigger
-        run: echo "job was triggered by ${{github.event_name}}"
+      - name: Checkout
+        uses: actions/checkout@v4
