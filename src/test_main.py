@@ -18,17 +18,17 @@ def mock_counter_file(tmp_path, monkeypatch):
     """
     # Створюємо шлях: /тимчасова_папка/data
     fake_counter_dir = tmp_path / "data"
-    
+
     # Створюємо цю папку фізично в тимчасовій директорії РАЗОМ із батьківськими,
     # щоб додаток не падав, коли намагатиметься відкрити файл
     fake_counter_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Визначаємо шлях до самого файлу
     fake_counter_file = fake_counter_dir / "counter.txt"
 
     # Підміняємо глобальну змінну шлях до файлу в модулі main
     monkeypatch.setattr(main, "counter_file", str(fake_counter_file))
-    
+
     yield
 
 
@@ -67,7 +67,7 @@ def test_logo_endpoint(monkeypatch):
     # Оскільки реального файлу image.png може не бути під час тестів,
     # підмінимо FileResponse або просто перевіримо поведінку.
     # Якщо файл існує у вашому репозиторії, цей тест пройде.
-    
+
     # Для безпеки підробимо існування файлу через перевірку у FileResponse
     # або переконаємося, що він повертає статус (якщо файл лежить поруч)
     if os.path.exists("image.png"):
